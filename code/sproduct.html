@@ -9,7 +9,7 @@
 <body>
 
     <section id="header">
-        <a href="#"> <img src="/img/logo.png" class="logo"></a>
+        <a href="#"> <img src="/img/logo2.png" class="logo"></a>
 
         <div>
             <ul id="navbar">
@@ -31,116 +31,71 @@
 
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
-            <img src="/img/p2.jpeg" width="100%" height="500px" id="MainImg">
+            <img src="/img/j1.jpg" width="100%" height="500px" id="MainImg">
 
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <img src="/img/p2.jpeg" width="100%" height="130px"class="small-img" alt="">
+                    <img src="/img/j1.jpg" width="100%" height="130px"class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="/img/p3.jpeg" width="100%" height="130px" class="small-img" alt="">
+                    <img src="/img/j2.jpg" width="100%" height="130px" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="/img/p3.jpeg" width="100%" height="130px" class="small-img" alt="">
+                    <img src="/img/j3.jpg" width="100%" height="130px" class="small-img" alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="/img/p4.jpeg" width="100%" height="130px" class="small-img" alt="">
+                    <img src="/img/j4.jpg" width="100%" height="130px" class="small-img" alt="">
                 </div>
             </div>
         </div>
 
         <div class="single-pro-details">
-            <h3>Diamond Set</h3>
-            <h4>Women Fashion</h4>
-            <h2>Rs.50000</h2>
+            <h3 id="pro-name">Diamond Set</h3>
+            <h4 id="pro-title">Women Fashion</h4>
+            <h2 id="pro-price">Rs.50000</h2>
             <input type="number" value="1">
             <button onclick="addToCart('Adidas', 'Cartoon Astronaut T-Shirts', 800, '/img/p1.jpeg')" class="normal">
                     Add To Cart
                 </button>
             <h4>Product Details</h4>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque obcaecati inventore facilis, natus blanditiis non. Assumenda, nostrum perferendis dolorum explicabo voluptatum exercitationem iusto enim at suscipit, dolore ea officia veniam in quae culpa! Facere excepturi molestiae dolorum sint fuga aut asperiores est ex, nam mollitia aliquid eligendi velit dignissimos?</span>
+            <span id="pro-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque obcaecati inventore facilis, natus blanditiis non. Assumenda, nostrum perferendis dolorum explicabo voluptatum exercitationem iusto enim at suscipit, dolore ea officia veniam in quae culpa! Facere excepturi molestiae dolorum sint fuga aut asperiores est ex, nam mollitia aliquid eligendi velit dignissimos?</span>
         </div>
     </section>
 
     <section id="product1" class="section-p1">
         <h2>Featured Products</h2>
         <p>Summer Collection New Modern Designs</p>
-        <div class="pro-container">
-
-            <div class="pro">
-                <img src="/img/p1.jpeg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rs. 800</h4>
-                </div>
-                <a href="#"> <i class="fa-solid fa-cart-plus cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="/img/p1.jpeg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rs. 800</h4>
-                </div>
-                <a href="#"> <i class="fa-solid fa-cart-plus cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="/img/p1.jpeg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rs. 800</h4>
-                </div>
-                <a href="#"> <i class="fa-solid fa-cart-plus cart"></i></a>
-            </div>
-
-            <div class="pro">
-                <img src="/img/p1.jpeg" alt="">
-                <div class="des">
-                    <span>Adidas</span>
-                    <h5>Cartoon Astronaut T-Shirts</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Rs. 800</h4>
-                </div>
-                <a href="#"> <i class="fa-solid fa-cart-plus cart"></i></a>
-            </div>
-
-        </div>
+        <div class="pro-container" id="product-container3"> </div>
+        <script>
+            // Fetch the product data from the JSON file
+            fetch('products.json')
+                .then(response => response.json())
+                .then(products => {
+                    let productContainer = document.getElementById('product-container3');
+                    let slicedProducts = products.slice(8); // Start from the 9th product (index 8)
+                    slicedProducts.forEach(product => {
+                        productContainer.innerHTML += `
+                        <div class="pro" onclick="window.location.href='sproduct.html?name=${product.name}&title=${product.title}&price=${product.price}&image=${product.image}&description=${encodeURIComponent(product.description)}'">
+                            <img src="${product.image}" alt="">
+                            <div class="des">
+                                <span>${product.name}</span>
+                                <h5>${product.title}</h5>
+                                <h4>Rs. ${product.price}</h4>
+                            </div>
+                            <button onclick=" event.stopPropagation(); addToCart('${product.name}', '${product.title}', ${product.price}, '${product.image}')" class="add-to-cart">
+                                Add To Cart
+                            </button>
+                        </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error loading products:', error));
+        </script>
     </section>
 
     <footer class="section-p1">
         <div class="col">
-            <img class="logo" src="/img/logo.png" alt="" >
+            <img class="logo" src="/img/logo2.png" alt="" >
             <h4>Contact</h4>
             <p><strong>Address:</strong> XYZ Colony</p>
             <p><strong>Phone:</strong>+91 87354-87346</p>
@@ -178,7 +133,7 @@
         </div>
 
         <div class="copyright">
-            <p>&copy; 2024 Kaushal Jewellers. </p>
+            <p>&copy; 2024 Diamond Dreamer. </p>
         </div>
     </footer>
 
@@ -206,5 +161,23 @@
     </script>
     
     <script src="script.js"></script>
+    <script>
+        // Get query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+    
+        // Extract product details from the URL
+        const name = params.get('name');
+        const title = params.get('title');
+        const price = params.get('price');
+        const image = params.get('image');
+        const description = params.get('description');
+    
+        // Set the main image, title, and price dynamically
+        document.getElementById("MainImg").src = image;
+        document.getElementById("pro-name").innerText = name;
+        document.getElementById("pro-title").innerText = title;
+        document.getElementById("pro-price").innerText = 'Rs. ' + price;
+        document.getElementById("pro-description").innerText = description;
+    </script>
 </body>
 </html>
