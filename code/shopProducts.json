@@ -1,0 +1,99 @@
+[
+    {
+        "name": "Handcraft",
+        "title": "Necklace Set",
+        "price": 35000,
+        "image": "/img/j8.jpg"
+    } ,
+    {
+      "name": "Fashion",
+      "title": "Necklace",
+      "price": 50000,
+      "image": "/img/j18.jpg"
+    },
+    {
+        "name": "Pearl",
+        "title": "Pendant",
+        "price": 2000,
+        "image": "/img/j5.jpg"
+    },
+    {
+      "name": "Fashion",
+      "title": "Earring",
+      "price": 2000,
+      "image": "/img/j19.jpg"
+    },
+    {
+        "name": "Beads",
+        "title": "Ring",
+        "price": 10000,
+        "image": "/img/j14.jpg"
+    },
+    {
+        "name": "Handcraft",
+        "title": "Ring Set",
+        "price": 4000,
+        "image": "/img/j11.jpg"
+    },
+    {
+        "name": "Bridal",
+        "title": "Necklace Set",
+        "price": 50000,
+        "image": "/img/j7.jpg"
+    },
+    {
+        "name": "Fashion",
+        "title": "Earrings",
+        "price": 5000,
+        "image": "/img/j2.jpg"
+    },
+    {
+      "name": "Pearl",
+      "title": "Necklace",
+      "price": 8000,
+      "image": "/img/j20.jpg"
+    },
+    {
+      "name": "Handcraft",
+      "title": "Bangle Set",
+      "price": 9000,
+      "image": "/img/j17.jpg"
+    },
+    {
+        "name": "Pearl",
+        "title": "Earring",
+        "price": 4000,
+        "image": "/img/j4.jpg"
+    },
+    {
+        "name": "Handcraft",
+        "title": "Necklace",
+        "price": 15000,
+        "image": "/img/j15.jpg"
+    },
+    {
+        "name": "Fashion",
+        "title": "Ring",
+        "price": 2000,
+        "image": "/img/j13.jpg"
+    },
+    {
+        "name": "Fashion",
+        "title": "Earring",
+        "price": 3000,
+        "image": "/img/j6.jpg"
+    },
+    {
+        "name": "Beads",
+        "title": "Bangle Set",
+        "price": 20000,
+        "image": "/img/j10.jpg"
+    },
+    {
+        "name": "Fashion",
+        "title": "Necklace Set",
+        "price": 20000,
+        "image": "/img/j16.jpg"
+    }  
+  ]
+  
