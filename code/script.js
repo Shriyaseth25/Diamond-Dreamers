@@ -21,6 +21,12 @@ if(close)
 // Initialize cart array in local storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+function updateCartCount() {
+    let cartCountElement = document.getElementById('cart-count');
+    let cartCount = parseInt(cartCountElement.innerText) || 0;
+    cartCountElement.innerText = cartCount + 1;
+}
+
 function addToCart(brand, name, price, img) {
     const product = { brand, name, price, img, quantity: 1 };
     const existingProductIndex = cart.findIndex(item => item.name === name);
@@ -32,7 +38,8 @@ function addToCart(brand, name, price, img) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    // alert(`${name} added to cart!`);
+    updateCartCount();
+    // alert(${name} added to cart!);
 }
 
 function displayCartItems() {
@@ -56,16 +63,17 @@ function displayCartItems() {
                 </td>
                 <td>Rs. ${item.price}</td>
                 <td class="quantity">
-                    <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value) ">
+                    <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
                 </td>
                 <td>Rs. ${itemTotal}</td>
-                <td><button onclick="removeFromCart(${index})" class = "remove-btn">Remove</button></td>
+                <td><button onclick="removeFromCart(${index})" class="remove-btn">Remove</button></td>
             </tr>
         `;
     });
 
     cartTotalElement.textContent = `Rs. ${cartTotal}`;
 }
+
 
 function updateQuantity(index, newQuantity) {
     cart[index].quantity = parseInt(newQuantity);
