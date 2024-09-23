@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en"></html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
 </head>
+<script src="script.js"></script>
 <body>
 
     <section id="header">
@@ -14,11 +15,11 @@
         <div>
             <ul id="navbar">
                 <li><a href="index.html"> Home</a></li>
-                <li><a class="active" href="shop.html"> Shop</a></li>
+                <li><a href="shop.html"> Shop</a></li>
                 <li><a href="blog.html"> Blog</a></li>
                 <li><a href="about.html"> About</a></li>
                 <li><a href="contact.html"> Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li id="lg-bag"><a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i> <span id="cart-count" class="cart-count">0</span></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
@@ -32,40 +33,100 @@
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
             <img src="/img/j1.jpg" width="100%" height="500px" id="MainImg">
-
-            <div class="small-img-group">
-                <div class="small-img-col">
-                    <img src="/img/j1.jpg" width="100%" height="130px"class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/j2.jpg" width="100%" height="130px" class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/j3.jpg" width="100%" height="130px" class="small-img" alt="">
-                </div>
-                <div class="small-img-col">
-                    <img src="/img/j4.jpg" width="100%" height="130px" class="small-img" alt="">
-                </div>
+    
+            <div class="small-img-group" id="small-img-container">
+                <!-- Images will be inserted here dynamically -->
             </div>
         </div>
-
+    
         <div class="single-pro-details">
             <h3 id="pro-name">Diamond Set</h3>
             <h4 id="pro-title">Women Fashion</h4>
             <h2 id="pro-price">Rs.50000</h2>
-            <input type="number" value="1">
-            <button onclick="addToCart('Adidas', 'Cartoon Astronaut T-Shirts', 800, '/img/p1.jpeg')" class="normal">
-                    Add To Cart
-                </button>
+            <button onclick="addToCart(
+                document.getElementById('pro-title').innerText, 
+                document.getElementById('pro-name').innerText, 
+                parseFloat(document.getElementById('pro-price').innerText.replace('Rs.', '').trim()), 
+                document.getElementById('MainImg').src)" class="normal" style="margin-left: 30px;">Add To Cart</button>
             <h4>Product Details</h4>
-            <span id="pro-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus doloremque obcaecati inventore facilis, natus blanditiis non. Assumenda, nostrum perferendis dolorum explicabo voluptatum exercitationem iusto enim at suscipit, dolore ea officia veniam in quae culpa! Facere excepturi molestiae dolorum sint fuga aut asperiores est ex, nam mollitia aliquid eligendi velit dignissimos?</span>
+            <span id="pro-description">This gold necklace is crafted from 22k pure gold, offering both luxury and durability. The intricate filigree design showcases exceptional craftsmanship, with delicate patterns inspired by traditional art, making it a standout piece. The necklace is lightweight and comfortable to wear, perfect for both daily wear and special occasions. Its adjustable length provides versatility, allowing you to style it as a choker or a longer pendant piece. Additionally, the secure clasp ensures a firm hold, while the polished finish gives it a radiant shine that enhances its timeless appeal.</span>
         </div>
     </section>
+
+    <script>
+
+    // List of small images
+    const smallImages = [
+        '/img/j1.jpg',
+        '/img/j2.jpg',
+        '/img/j3.jpg',
+        '/img/j4.jpg',
+        '/img/j5.jpg',
+        '/img/j6.jpg',
+        '/img/j7.jpg',
+        '/img/j8.jpg',
+        '/img/j9.jpg',
+        '/img/j10.jpg',
+        '/img/j11.jpg',
+        '/img/j12.jpg',
+        '/img/j13.jpg',
+        '/img/j14.jpg',
+        '/img/j15.jpg',
+        '/img/j16.jpg',
+    ];
+
+// Shuffle the small images array
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+const shuffledImages = shuffle([...smallImages]).slice(0, 3); // Get 3 random images
+
+document.addEventListener("DOMContentLoaded", function () {
+    let smallImgContainer = document.getElementById('small-img-container');
+    const mainImg = document.getElementById('MainImg');
+
+    if (!mainImg || !smallImgContainer) {
+        console.error("Main image or small image container is missing.");
+        return;
+    }
+
+    // Loop through the 3 shuffled images and create small image elements
+    shuffledImages.forEach((imgSrc, index) => {
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('small-img-col');
+        imgDiv.innerHTML = `<img src="${imgSrc}" width="100%" height="130px" class="small-img" alt="Image ${index+1}">`;
+        smallImgContainer.appendChild(imgDiv);
+
+        // Add click event to swap the small image with the main image
+        imgDiv.addEventListener('click', () => {
+            mainImg.src = imgSrc;
+        });
+    });
+
+    // Now add the 4th image, which is the same as the current main image
+    const mainImgDiv = document.createElement('div');
+    mainImgDiv.classList.add('small-img-col');
+    mainImgDiv.innerHTML = `<img src="${mainImg.src}" width="100%" height="130px" class="small-img" alt="Main Image">`;
+    smallImgContainer.appendChild(mainImgDiv);
+
+    // Add click event to swap this small main image with the main image
+    mainImgDiv.addEventListener('click', () => {
+        mainImg.src = mainImgDiv.querySelector('img').src;
+    });
+});
+
+
+        </script>
 
     <section id="product1" class="section-p1">
         <h2>Featured Products</h2>
         <p>Summer Collection New Modern Designs</p>
-        <div class="pro-container" id="product-container3"> </div>
+        <div class="pro-container" id="product-container3"></div>
         <script>
             // Fetch the product data from the JSON file
             fetch('products.json')
@@ -76,13 +137,13 @@
                     slicedProducts.forEach(product => {
                         productContainer.innerHTML += `
                         <div class="pro" onclick="window.location.href='sproduct.html?name=${product.name}&title=${product.title}&price=${product.price}&image=${product.image}&description=${encodeURIComponent(product.description)}'">
-                            <img src="${product.image}" alt="">
+                            <img src="${product.image}" alt="${product.name}">
                             <div class="des">
-                                <span>${product.name}</span>
-                                <h5>${product.title}</h5>
-                                <h4>Rs. ${product.price}</h4>
+                                <span class="spro-name">${product.name}</span>
+                                <h5 class="spro-title">${product.title}</h5>
+                                <h5 style="color: #aa274e">Rs. ${product.price}</h4>
                             </div>
-                            <button onclick=" event.stopPropagation(); addToCart('${product.name}', '${product.title}', ${product.price}, '${product.image}')" class="add-to-cart">
+                            <button onclick="event.stopPropagation(); addToCart('${product.name}', '${product.title}', ${product.price}, '${product.image}')" class="add-to-cart">
                                 Add To Cart
                             </button>
                         </div>
@@ -92,6 +153,7 @@
                 .catch(error => console.error('Error loading products:', error));
         </script>
     </section>
+    
 
     <footer class="section-p1">
         <div class="col">
@@ -160,7 +222,7 @@
         }
     </script>
     
-    <script src="script.js"></script>
+    
     <script>
         // Get query parameters from the URL
         const params = new URLSearchParams(window.location.search);
@@ -170,14 +232,15 @@
         const title = params.get('title');
         const price = params.get('price');
         const image = params.get('image');
-        const description = params.get('description');
+        // const description = params.get('description');
     
         // Set the main image, title, and price dynamically
         document.getElementById("MainImg").src = image;
         document.getElementById("pro-name").innerText = name;
         document.getElementById("pro-title").innerText = title;
         document.getElementById("pro-price").innerText = 'Rs. ' + price;
-        document.getElementById("pro-description").innerText = description;
+        // document.getElementById("pro-description").innerText = description;
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
